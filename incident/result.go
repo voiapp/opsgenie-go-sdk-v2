@@ -1,15 +1,22 @@
 package incident
 
 import (
-	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
 	"time"
+
+	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
 )
+
+type Links struct {
+	Web string `json:"web"`
+	Api string `json:"api"`
+}
 
 type Incident struct {
 	Id              string            `json:"id"`
 	ServiceId       string            `json:"serviceId"`
 	TinyId          string            `json:"tinyId"`
 	Message         string            `json:"message"`
+	Description     string            `json:"description"`
 	Status          string            `json:"status"`
 	Tags            []string          `json:"tags"`
 	CreatedAt       time.Time         `json:"createdAt"`
@@ -18,6 +25,7 @@ type Incident struct {
 	OwnerTeam       string            `json:"ownerTeam"`
 	Responders      []Responder       `json:"responders"`
 	ExtraProperties map[string]string `json:"extraProperties"`
+	Links           Links             `json:"links"`
 }
 
 type RequestStatusResult struct {
